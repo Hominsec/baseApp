@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block css_js %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/dashboard.css')}}"> 
+<script src="{{url_for('static',filename='js/mqttws31.js')}}"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="{{url_for('static',filename='js/mqttws31.js')}}"> </script>
+<script src="{{url_for('static',filename='js/dashboard.js')}}"> </script>
+	
+
+{% endblock %}
+
+{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dashboard</title>
+	
+	<!--Add font from Google fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	
+	<!--Link CSS style sheet to html document -->
+	<!--<link rel="stylesheet" href="{{url_for('static',filename='css/dashboard.css')}}">-->
+	
+	<!--Link javascript file to html document -->
+	<!--<script src="mqttws31.js"> </script>-->
+	<!--<script src="dashboard.js"> </script>-->
+
+
+</head>
+<body>
+
+	<div class="header">
+		<h1>Home Automation Dashboard</h1>
+	</div>
+	<hr>
+	<div id="messages"></div>
+	<div id="status"></div>
+	<hr>
+	
+	
+	<ul class="dashboard">
+		<li class="dashboard_item kitchen">
+			<h4>Kitchen</h4>
+			<img id ="tt1" src="{{url_for('static',filename='images/bulb_off.svg')}}" height="60" width="40"/>
+			<p id="var1">OFF</p>
+			<button type="button" onclick=afunc()>Toggle</button>
+			
+			
+			<script>
+			function afunc(){
+				if(document.getElementById("var1").innerHTML=="ON"){
+					document.getElementById("var1").innerHTML="OFF";
+					
+				}
+				else{
+					document.getElementById("var1").innerHTML="ON";
+					
+					}
+					
+			}
+			</script> 
+		
+			
+		</li>
+		
+		<li class="dashboard_item livingroom">
+			<h4>Living Room</h4>
+			<img id ="tt1" src="{{url_for('static',filename='images/bulb_off.svg')}}" height="60" width="40"/>
+			<p id="var2">OFF</p>
+			<button type="button" onclick=bfunc()>Toggle</button>
+			<script>
+			function bfunc(){
+				if(document.getElementById("var2").innerHTML=="ON"){
+					document.getElementById("var2").innerHTML="OFF";
+				}
+				else{
+					document.getElementById("var2").innerHTML="ON";
+					}	
+			}
+			</script>
+		</li>
+		
+		<li class="dashboard_item bedroom">
+			<h4>Bedroom</h4>
+			<img src="{{url_for('static',filename='images/bulb_off.svg')}}" height="60" width="40"/>
+			<p id ="var3">0</p>
+			<button type="button" onclick=cfunc()>Toggle</button>
+			<script>
+			function cfunc(){
+				if(document.getElementById("var3").innerHTML==0){
+					document.getElementById("var3").innerHTML=100;
+				}
+				else{
+					document.getElementById("var3").innerHTML=100;
+						
+			}
+			}
+			</script>
+		</li>
+		
+		<li class="dashboard_item bathroom">
+			<h4>Bathroom</h4>
+			<img src="{{url_for('static',filename='images/bulb_off.svg')}}" height="60" width="40"/>
+			<p id ="var4">OFF</p>
+			<button type="button" onclick=dfunc()>Toggle</button>
+			<script>
+			function dfunc(){
+				if(document.getElementById("var4").innerHTML=="ON"){
+					document.getElementById("var4").innerHTML="OFF";
+				}
+				else{
+					document.getElementById("var4").innerHTML="ON";}	
+			}
+			</script>
+		</li>
+		
+		<li class="dashboard_item studyroom">
+			<h4>Studyroom</h4>
+			<img src="{{url_for('static',filename='images/bulb_off.svg')}}" height="60" width="40"/>
+			<p id ="var5">OFF</p>
+			<button type="button" onclick=efunc()>Toggle</button>
+			<script>
+			function efunc(){
+				if(document.getElementById("var5").innerHTML=="ON"){
+					document.getElementById("var5").innerHTML="OFF";
+				}
+				else{
+					document.getElementById("var5").innerHTML="ON";}	
+			}
+			</script>
+		</li>
+		
+		<li class="dashboard_item hall">
+			<h4>Hall</h4>
+			<img src="{{url_for('static',filename='images/bulb_off.svg')}}" height="60" width="40"/>
+			<p id ="var6">OFF</p>
+			<button type="button" onclick=ffunc()>Toggle</button>
+			<script>
+			function ffunc(){
+				if(document.getElementById("var6").innerHTML=="ON"){
+					document.getElementById("var6").innerHTML="OFF";
+				}
+				else{
+					document.getElementById("var6").innerHTML="ON";}	
+			}
+			</script>
+		</li>
+		
+		<li class="dashboard_item frontdoor">
+			<h4>Front Door</h4>
+			<img src="{{url_for('static',filename='images/door_close.svg')}}" height="70" width="50"/>
+			<p>CLOSED</p>
+		</li>
+		
+		<li class="dashboard_item balconydoor">
+			<h4>Balcony Door</h4>
+			<img src="{{url_for('static',filename='images/door_close.svg')}}" height="70" width="50"/>
+			<p>CLOSED</p>
+		</li>
+	</ul>
+	<div class="date"><span>Start</span>
+	<input id="start" type="date" placeholder="Start">
+	<span>End</span> <input id="end"
+	type="date" placeholder="End">
+	<button class="plot" id="qhe">Plot</button>
+	</div>
+	
+	<figure class="highcharts-figure">
+		<div id="container"></div>
+	</figure>
+	<figure class="highcharts-figure">
+		<div id="livedata"></div>
+	</figure>
+	
+	
+	
+	
+
+</body>
+</html> 
+{% endblock %}
+ 

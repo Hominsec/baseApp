@@ -1,0 +1,46 @@
+.dashboard{
+display: flex;
+gap: 30px;
+flex-wrap: wrap;
+}
+.dashboard_item{
+width: 360px;
+height: 200px;
+background: #fff;
+#background: #000000;
+padding-left: 15px;
+padding-right: 15px;
+border-style:solid;
+border-radius: 7px;
+border-color:#1ECBE1;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center ;
+gap: 10px;
+overflow:hidden;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+/*background-image:url("azure.jpg"); background-size:100% 100%;*/
+}
+.dashboard_item > h4{
+margin: 0;
+/*border-bottom: 1px solid black;*/
+width: 109%;
+background-color: #cbd5e1;
+
+}
+.dashboard_item > button{
+color:black;
+
+}
+.dashboard_item > button:hover{
+background-color:#1ECBE1;
+color:cornsilk;
+
+}
+
+.flex-container{
+display:flex;
+align-items:flex-start;
+gap:2px;
+}

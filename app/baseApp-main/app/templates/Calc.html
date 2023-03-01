@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block css_js %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/Calc.css') }}">
+<script src="{{url_for('static',filename='js/Calc.js')}}"></script>
+{% endblock %}
+
+{% block main %}
+<!--<ul class="dashboard">
+		<li class="dashboard_item kitchen">
+			<h4>Sum of two integers</h4>
+			<input type="text" id="One" name="Sum" size=12>
+			<p id="var1">+</p>
+			<input type="text" id="Two" name="Sum"  size=12>
+			<button type="button" onclick=afunc()>Submit</button>
+			<script>
+			function afunc(){}
+			</script> 
+</ul>-->
+<ul class="dashboard">
+		<li class="dashboard_item sum">
+			<h4>Sum of two integers</h4>
+			<div class="flex-container">
+				<input type="number" id="One" name="Sum" style="width:150px" >
+				<p id="var1">+</p>
+				<input type="number" id="Two" name="Sum" style="width:150px;" >
+			</div>
+			<p id="p1"></p>
+			<button id="hm" type="button"  style="border:none;" onclick="afunc()" onmouseover=over()>Submit</button>
+			<script>
+			function afunc(){
+				<!--console.log("Button clicked");-->
+			}
+			function over(){
+				document.getElementById("hm").style.color="red";
+			
+			}
+			</script> 
+		</li>
+		<li class="dashboard_item prod">
+			<h4>Product of two integers</h4>
+			<div class="flex-container">
+				<input type="number" id="x" name="Sum" style="width:150px">
+				<p id="var1">x</p>
+				<input type="number" id="y" name="Sum"  style="width:150px">
+			</div>
+			<p id="prd"></p>
+			
+			<button type="button" id="z" style="border:none;" onclick=afunc() onmouseover="over()">Submit</button>
+			<script>
+			function afunc(){}
+			function over(){
+				<!--document.getElementById("z").color=black;-->
+			
+			}
+			</script> 
+		</li>
+		<li class="dashboard_item temp">
+			<h4>Temperature Conversion</h4>
+			<div class="flex-container">
+				<input type="number" id="t" name="Sum" size=10>
+			</div>
+			<p id="temp"></p>
+			
+			<button type="button" id="n" style="border:none;" onclick=afunc() onmouseover="over()">Submit</button>
+			<script>
+			function afunc(){}
+			function over(){
+				<!--document.getElementById("n").color=black;-->
+			
+			}
+			</script> 
+		</li>
+</ul>
+
+{% endblock %}

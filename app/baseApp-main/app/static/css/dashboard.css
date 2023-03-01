@@ -1,0 +1,66 @@
+body {
+background: #e2e1e0;
+text-align: center;
+font-family: 'Roboto', sans-serif;
+background-color:#0d0c0cc9;
+
+}
+.header{
+background-color: lightblue;
+height: 100px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.dashboard{
+display: flex;
+gap: 30px;
+flex-wrap: wrap;
+
+}
+.dashboard_item{
+width: 200px;
+height: 250px;
+background: #fff;
+color: yellow;
+padding: 16px;
+border-radius: 4px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center ;
+gap: 10px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+background-color:brown;
+/*background-image:url_for('static',filename='images/azure.jpg'); background-size:100% 100%;*/
+/*"{{url_for('static',filename='images/azure.jpg')}}"*/
+}
+.dashboard_item > h4{
+margin: 0;
+border-bottom: 1px solid black;
+width: 100%;
+}
+.dashboard_item > p{
+font-size: 20px;
+margin: 0;
+color: yellow;
+font-weight: bold;
+}
+.mqttConnected {
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background-color: turquoise;
+border: 1px solid cornsilk;
+padding: 1px;
+}
+.mqttdisconnected {
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background-color: darkred;
+border: 1px solid cornsilk;
+padding: 1px;
+}
+
+
